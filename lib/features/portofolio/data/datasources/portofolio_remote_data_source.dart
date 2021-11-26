@@ -28,13 +28,14 @@ class PortofolioRemoteDataSourceImpl implements PortofolioRemoteDataSource {
       DocumentReference<Map<String, dynamic>> portofolioDoc =
           await _firestore.portofolioDocument(userId, locale);
 
-      Log.setLog("Start ${portofolioDoc.toString()}",
-          log: "PortofolioRemoteDataSourceImpl.fetchPortofolio ==>");
-
       final portofolioMap = await portofolioDoc.get();
 
-      Log.setLog("$userId $locale ${portofolioMap.exists}",
+      Log.setLog("Start ${portofolioDoc.toString()} ${portofolioMap.exists}",
           log: "PortofolioRemoteDataSourceImpl.fetchPortofolio ==>");
+
+      if (!portofolioMap.exists) {
+        throw DocumentNotExistException("Portofolio is Not Exists");
+      }
 
       PortofolioModel portofolio =
           PortofolioModel.fromJson(portofolioMap.data() ?? {});
@@ -48,8 +49,12 @@ class PortofolioRemoteDataSourceImpl implements PortofolioRemoteDataSource {
 
         final templateMap = await templateDoc.get();
 
-        Log.setLog("$userId $locale ${templateMap.id} ${templateMap.exists}",
+        Log.setLog("${templateDoc.toString()} ${templateMap.exists}",
             log: "PortofolioRemoteDataSourceImpl.fetchPortofolio ==>");
+
+        if (!templateMap.exists) {
+          throw DocumentNotExistException("Portofolio is Not Exists");
+        }
 
         TemplateModel finalTemplate =
             TemplateModel.fromJson(templateMap.data() ?? {});
@@ -62,11 +67,8 @@ class PortofolioRemoteDataSourceImpl implements PortofolioRemoteDataSource {
       return portofolio;
     } on FirebaseException catch (e) {
       Log.setLog(e.toString(),
-          log: "PortofolioRemoteDataSourceImpl.fetchPortofolio.FirebaseException ==>");
-      throw ServerException("${e.toString}");
-    } catch (e, s) {
-        Log.setLog("${e.toString()} $s",
-          log: "PortofolioRemoteDataSourceImpl.fetchPortofolio.catch ==>");
+          log:
+              "PortofolioRemoteDataSourceImpl.fetchPortofolio.FirebaseException ==>");
       throw ServerException("${e.toString}");
     }
   }

@@ -29,3 +29,10 @@ class PortofolioFailureState extends PortofolioState {
   PortofolioFailureState(this.portofolioState, {this.message = ""})
       : super(portofolioState);
 }
+
+class PortofolioNotExistState extends PortofolioState {
+  final String message;
+  final PortofolioModel? portofolioState;
+  PortofolioNotExistState(this.portofolioState, {this.message = ""})
+      : super(portofolioState);
+}

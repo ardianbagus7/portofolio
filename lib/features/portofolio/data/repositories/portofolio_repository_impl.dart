@@ -20,6 +20,8 @@ class PortofolioRepositoryImpl implements PortofolioRepository {
       final result =
           await portofolioRemoteDataSource.fetchPortofolio(userId, locale);
       return Right(result);
+    } on DocumentNotExistException catch (e) {
+      return Left(DocumentNotExistFailure(e.message));
     } on ServerException {
       return const Left(ServerFailure(""));
     } catch (e, s) {

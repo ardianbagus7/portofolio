@@ -11,3 +11,9 @@ class CacheException implements Exception {
 }
 
 class AuthCancelledByUserException implements Exception {}
+
+class DocumentNotExistException implements Exception {
+  final String message;
+
+  DocumentNotExistException(this.message);
+}

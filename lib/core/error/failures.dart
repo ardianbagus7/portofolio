@@ -17,3 +17,7 @@ class ServerFailure extends Failure {
 class CacheFailure extends Failure {
   const CacheFailure(String message) : super(message);
 }
+
+class DocumentNotExistFailure extends Failure {
+  const DocumentNotExistFailure(String message) : super(message);
+}
