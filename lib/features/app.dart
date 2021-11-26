@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:portofolio/features/portofolio/presentation/pages/portofolio_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:portofolio/core/routes/routes.dart';
 import 'package:portofolio/core/theme/themes.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
 
       //* Routes
       getPages: Routes().getPages(),
-      initialRoute: SplashScreen.tag,
+      initialRoute: PortofolioPage.tag,
 
       //* Theme
       // Define a light and dark color theme. Then, read the user's

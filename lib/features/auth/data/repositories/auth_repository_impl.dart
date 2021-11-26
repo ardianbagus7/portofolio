@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:portofolio/core/error/exceptions.dart';
 import 'package:portofolio/core/error/failures.dart';
 import 'package:portofolio/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:portofolio/features/auth/domain/entities/user.dart';
+import 'package:portofolio/features/auth/data/models/user_model.dart';
 import 'package:portofolio/features/auth/domain/repositories/auth_repository.dart';
 
 @LazySingleton(as: AuthRepository)
@@ -28,7 +28,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Option<User>> getSignedInUser() {
+  Future<Option<UserModel>> getSignedInUser() {
     // TODO: implement getSignedInUser
     throw UnimplementedError();
   }

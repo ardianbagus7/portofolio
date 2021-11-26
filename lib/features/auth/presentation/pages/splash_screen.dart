@@ -38,19 +38,19 @@ class _SplashScreenState
           children: [
             ElevatedButton(
               onPressed: () {
-                pushEvent(SilentSignInWithGoogleEvent());
+                pushEvent(context, SilentSignInWithGoogleEvent());
               },
               child: Text("cek"),
             ),
             ElevatedButton(
               onPressed: () {
-                pushEvent(SignInWithGoogleEvent());
+                pushEvent(context, SignInWithGoogleEvent());
               },
               child: Text("cek"),
             ),
             ElevatedButton(
               onPressed: () {
-                pushEvent(SignoutEvent());
+                pushEvent(context, SignoutEvent());
               },
               child: Text("cek"),
             ),

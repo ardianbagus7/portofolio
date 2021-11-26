@@ -1,8 +1,8 @@
 {
   "project_info": {
     "project_number": "127462657703",
-    "project_id": "portofolio-6678f",
-    "storage_bucket": "portofolio-6678f.appspot.com"
+    "project_id": "mylandingpage-6678f",
+    "storage_bucket": "mylandingpage-6678f.appspot.com"
   },
   "client": [
     {
@@ -19,6 +19,14 @@
           "android_info": {
             "package_name": "com.ardianbagus.mylandingpage",
             "certificate_hash": "687d8c404a439b2cbd97d108f9b0da51b52ab0c6"
+          }
+        },
+        {
+          "client_id": "127462657703-r384bl9pq5aqr1a5jraal7l72lu72kff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ardianbagus.mylandingpage",
+            "certificate_hash": "9c4c0b6e9b42305b1677d31dfc863fafd670c1dd"
           }
         },
         {

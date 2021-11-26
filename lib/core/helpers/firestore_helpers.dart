@@ -22,8 +22,30 @@ extension FirestoreX on FirebaseFirestore {
     return FirebaseFirestore.instance.collection('users').doc(userId);
   }
 
-  Future<DocumentReference> headerDocument(String userId,String locale) async {
-    return FirebaseFirestore.instance.collection("landingPage").doc(userId).collection(locale).doc("header");
+  Future<DocumentReference<Map<String, dynamic>>> portofolioDocument(
+      String userId, String locale) async {
+    return FirebaseFirestore.instance
+        .collection("landingPage")
+        .doc(userId)
+        .collection(locale)
+        .doc("portofolio");
+  }
+
+  Future<DocumentReference<Map<String, dynamic>>> templateDocument(
+      String userId, String locale, String templateId) async {
+    return FirebaseFirestore.instance
+        .collection("landingPage")
+        .doc(userId)
+        .collection(locale)
+        .doc(templateId);
+  }
+
+  Future<DocumentReference> headerDocument(String userId, String locale) async {
+    return FirebaseFirestore.instance
+        .collection("landingPage")
+        .doc(userId)
+        .collection(locale)
+        .doc("header");
   }
 }
 

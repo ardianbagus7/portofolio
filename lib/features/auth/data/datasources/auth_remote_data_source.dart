@@ -6,13 +6,13 @@ import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:portofolio/core/error/exceptions.dart';
-import 'package:portofolio/features/auth/domain/entities/user.dart';
+import 'package:portofolio/features/auth/data/models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<fs.UserCredential> signinWithGoogle();
   Future<fs.UserCredential> silentSigninWithGoogle();
-  Future<User> getUserData();
-  Future<User> setUserData();
+  Future<UserModel> getUserData();
+  Future<UserModel> setUserData();
   Future<bool> checkSignin();
   Future<bool> logoutUser();
   Future<Option<fs.User>> getSignedInUser();
@@ -88,13 +88,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<User> getUserData() {
+  Future<UserModel> getUserData() {
     // TODO: implement getUserData
     throw UnimplementedError();
   }
 
   @override
-  Future<User> setUserData() {
+  Future<UserModel> setUserData() {
     // TODO: implement setUserData
     throw UnimplementedError();
   }

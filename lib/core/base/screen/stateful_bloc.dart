@@ -90,6 +90,7 @@ abstract class StatefulBloc<S extends StatefulWidget, B extends BaseBloc<E, ST>,
   Widget body();
 
   void pushEvent(
+    BuildContext context,
     E event,
   ) {
     setLog(event.runtimeType);
@@ -97,10 +98,12 @@ abstract class StatefulBloc<S extends StatefulWidget, B extends BaseBloc<E, ST>,
   }
 
   void initEvent(
+    BuildContext context,
     E event,
   ) {
     setLog(event.runtimeType);
-    Future.delayed(const Duration(milliseconds: 300), () => pushEvent(event));
+    Future.delayed(
+        const Duration(milliseconds: 300), () => pushEvent(context, event));
   }
 
   void initVoid(void function) {
