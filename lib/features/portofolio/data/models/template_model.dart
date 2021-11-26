@@ -23,6 +23,7 @@ class TemplateModel extends Template {
       );
 
   factory TemplateModel.fromJson(Map<String, dynamic> json) {
+    
     return TemplateModel(
       id: (json['id'] is String) ? json['id'] : "",
       templateId: (json['templateId'] is String) ? json['templateId'] : "",

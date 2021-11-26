@@ -22,7 +22,7 @@ class _SplashScreenState
   }
 
   @override
-  Widget body() {
+  Widget body(BuildContext context) {
     return blocConsumer(
       listener: (context, state) {
         setLog(state.toString());
@@ -38,19 +38,19 @@ class _SplashScreenState
           children: [
             ElevatedButton(
               onPressed: () {
-                pushEvent(context, SilentSignInWithGoogleEvent());
+                pushEvent(SilentSignInWithGoogleEvent());
               },
               child: Text("cek"),
             ),
             ElevatedButton(
               onPressed: () {
-                pushEvent(context, SignInWithGoogleEvent());
+                pushEvent(SignInWithGoogleEvent());
               },
               child: Text("cek"),
             ),
             ElevatedButton(
               onPressed: () {
-                pushEvent(context, SignoutEvent());
+                pushEvent(SignoutEvent());
               },
               child: Text("cek"),
             ),

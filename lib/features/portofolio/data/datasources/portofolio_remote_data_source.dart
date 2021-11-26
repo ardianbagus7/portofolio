@@ -30,7 +30,7 @@ class PortofolioRemoteDataSourceImpl implements PortofolioRemoteDataSource {
 
       final portofolioMap = await portofolioDoc.get();
 
-      Log.setLog("Start ${portofolioDoc.toString()} ${portofolioMap.exists}",
+      Log.setLog("Start ${portofolioDoc.toString()} ${portofolioMap.exists} ",
           log: "PortofolioRemoteDataSourceImpl.fetchPortofolio ==>");
 
       if (!portofolioMap.exists) {
@@ -56,8 +56,11 @@ class PortofolioRemoteDataSourceImpl implements PortofolioRemoteDataSource {
           throw DocumentNotExistException("Portofolio is Not Exists");
         }
 
-        TemplateModel finalTemplate =
-            TemplateModel.fromJson(templateMap.data() ?? {});
+        TemplateModel finalTemplate = TemplateModel(
+          id: template.id,
+          templateId: template.id,
+          meta: templateMap.data() ?? {},
+        );
 
         templates.add(finalTemplate);
       });

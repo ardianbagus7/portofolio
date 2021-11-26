@@ -1,6 +1,6 @@
 import 'social_media.dart';
 
-class Header {
+class Hero {
   final String id;
   final String imageUrl;
   final String title;
@@ -10,7 +10,7 @@ class Header {
   final List<SocialMedia> socialMediaList;
   final String? template;
 
-  Header({
+  Hero({
     required this.id,
     required this.imageUrl,
     required this.title,

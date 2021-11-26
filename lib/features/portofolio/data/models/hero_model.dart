@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:portofolio/features/portofolio/data/models/social_media_model.dart';
-import 'package:portofolio/features/portofolio/domain/entities/header.dart';
+import 'package:portofolio/features/portofolio/domain/entities/hero.dart';
 
-class HeaderModel extends Header {
-  HeaderModel({
+class HeroModel extends Hero {
+  HeroModel({
     required String id,
     String imageUrl = "",
     String title = "",
@@ -23,8 +23,8 @@ class HeaderModel extends Header {
           template: template,
         );
 
-  factory HeaderModel.fromJson(Map<String, dynamic> json) {
-    return HeaderModel(
+  factory HeroModel.fromJson(Map<String, dynamic> json) {
+    return HeroModel(
       id: (json['id'] is String) ? json['id'] : "",
       imageUrl: (json['imageUrl'] is String) ? json['imageUrl'] : "",
       title: (json['title'] is String) ? json['title'] : "",

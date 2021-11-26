@@ -47,12 +47,12 @@ abstract class StatefulBloc<S extends StatefulWidget, B extends BaseBloc<E, ST>,
     width = MediaQuery.of(context).size.width;
     calculateBottomInsets();
     // setStatusBarColorToPrimary();
-    return body();
+    return body(context);
   }
 
-  Widget createBloc({required Widget child}) {
+  Widget createBloc({required Widget child, required E event}) {
     return BlocProvider<B>(
-      create: (context) => getIt<B>(),
+      create: (context) => getIt<B>()..add(event),
       child: child,
     );
   }
@@ -87,10 +87,9 @@ abstract class StatefulBloc<S extends StatefulWidget, B extends BaseBloc<E, ST>,
     return BlocSelector<B, ST, V>(selector: d, builder: builder);
   }
 
-  Widget body();
+  Widget body(BuildContext context);
 
   void pushEvent(
-    BuildContext context,
     E event,
   ) {
     setLog(event.runtimeType);
@@ -98,12 +97,10 @@ abstract class StatefulBloc<S extends StatefulWidget, B extends BaseBloc<E, ST>,
   }
 
   void initEvent(
-    BuildContext context,
     E event,
   ) {
     setLog(event.runtimeType);
-    Future.delayed(
-        const Duration(milliseconds: 300), () => pushEvent(context, event));
+    Future.delayed(const Duration(milliseconds: 300), () => pushEvent(event));
   }
 
   void initVoid(void function) {

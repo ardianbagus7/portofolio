@@ -52,16 +52,20 @@ class MyApp extends StatelessWidget {
       builder: (context, widget) => ResponsiveWrapper.builder(
         BlocProvider(
           create: (context) => getIt<AuthBloc>(),
-          child: widget,
+          child: BouncingScrollWrapper.builder(context, widget!),
         ),
-        maxWidth: 600,
-        minWidth: 400,
+        maxWidth: 1200,
+        minWidth: 450,
         defaultScale: true,
-        breakpoints: [
-          const ResponsiveBreakpoint.autoScale(500, name: MOBILE),
+        breakpoints: const [
+          ResponsiveBreakpoint.resize(450, name: MOBILE),
+          ResponsiveBreakpoint.autoScale(800, name: TABLET),
+          ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+          ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+          ResponsiveBreakpoint.autoScale(2460, name: "4K"),
         ],
         background: Container(
-          color: const Color(0xFFF5F5F5),
+          color: Theme.of(context).scaffoldBackgroundColor,
         ),
       ),
     );
