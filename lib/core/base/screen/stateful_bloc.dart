@@ -57,6 +57,18 @@ abstract class StatefulBloc<S extends StatefulWidget, B extends BaseBloc<E, ST>,
     );
   }
 
+  Widget bodyConstraints({required Widget child, double maxWidth = 1200}) {
+    return Center(
+      child: Container(
+        constraints: BoxConstraints(
+          maxWidth: maxWidth,
+        ),
+        alignment: Alignment.center,
+        child: child,
+      ),
+    );
+  }
+
   void loading() {
     showDialog(
       context: context,

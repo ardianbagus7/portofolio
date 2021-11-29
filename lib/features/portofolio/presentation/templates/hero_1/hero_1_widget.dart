@@ -32,7 +32,7 @@ class Hero1Widget extends BaseStateless {
             : ResponsiveRowColumnType.ROW,
         children: [
           ResponsiveRowColumnItem(
-            rowFlex: 2,
+            rowFlex: 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +42,9 @@ class Hero1Widget extends BaseStateless {
                   children: [
                     AdaptiveText(
                       header.title,
-                      style: Styles.headlineSecondaryTextStyle,
+                      style: Styles.headlineSecondaryTextStyle.copyWith(
+                        fontSize: 30,
+                      ),
                     ),
                     // EntranceFader(
                     //   offset: Offset(0, 0),
@@ -60,11 +62,17 @@ class Hero1Widget extends BaseStateless {
                 ),
                 AdaptiveText(
                   header.firstName,
-                  style: Styles.headlineTextStyle,
+                  style: Styles.headlineTextStyle.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 50,
+                  ),
                 ),
                 AdaptiveText(
                   header.lastName,
-                  style: Styles.headlineTextStyle,
+                  style: Styles.headlineTextStyle.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 50,
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
@@ -82,7 +90,9 @@ class Hero1Widget extends BaseStateless {
                       TyperAnimatedTextKit(
                         isRepeatingAnimation: true,
                         speed: const Duration(milliseconds: 50),
-                        textStyle: Styles.headlineSecondaryTextStyle,
+                        textStyle: Styles.headlineSecondaryTextStyle.copyWith(
+                          fontSize: 30,
+                        ),
                         text: header.roles,
                       ),
                     ],
@@ -118,13 +128,16 @@ class Hero1Widget extends BaseStateless {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: imageProvider,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
                 placeholder: (context, url) =>
                     const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+                errorWidget: (context, url, error) {
+                  setLog("$url $error");
+                  return const Icon(Icons.error);
+                },
               ),
             ),
           ),

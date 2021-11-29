@@ -38,7 +38,8 @@ class MyApp extends StatelessWidget {
 
       //* Routes
       getPages: Routes().getPages(),
-      initialRoute: PortofolioPage.tag,
+      initialRoute: PortofolioPage.tag+"/ardianbagus2403@gmail.com",
+      unknownRoute: Routes.unknownRoute,
 
       //* Theme
       // Define a light and dark color theme. Then, read the user's
@@ -54,15 +55,15 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<AuthBloc>(),
           child: BouncingScrollWrapper.builder(context, widget!),
         ),
-        maxWidth: 1200,
-        minWidth: 450,
+        // maxWidth: 1200,
+        // minWidth: 450,
         defaultScale: true,
         breakpoints: const [
           ResponsiveBreakpoint.resize(450, name: MOBILE),
-          ResponsiveBreakpoint.autoScale(800, name: TABLET),
-          ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+          ResponsiveBreakpoint.resize(800, name: TABLET),
+          ResponsiveBreakpoint.resize(1000, name: TABLET),
           ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-          ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+          ResponsiveBreakpoint.resize(2460, name: "4K"),
         ],
         background: Container(
           color: Theme.of(context).scaffoldBackgroundColor,

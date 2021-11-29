@@ -37,9 +37,7 @@ abstract class BaseStateful<S extends StatefulWidget> extends State<S> {
     String? actionText,
     double? bottomPadding = 100.0,
     void Function()? actionCallback,
-  }) {
-   
-  }
+  }) {}
 
   /// Variable contains height of the on-screen keyboard
   double keyboardHeight = 0.0;
@@ -48,6 +46,19 @@ abstract class BaseStateful<S extends StatefulWidget> extends State<S> {
       WidgetsBinding.instance!.window.viewInsets,
       WidgetsBinding.instance!.window.devicePixelRatio,
     ).bottom;
+  }
+
+  // Body Constraints
+  Widget bodyConstraints({required Widget child, double maxWidth = 1200}) {
+    return Center(
+      child: Container(
+        constraints: BoxConstraints(
+          maxWidth: maxWidth,
+        ),
+        alignment: Alignment.center,
+        child: child,
+      ),
+    );
   }
 
   /// Body of the page

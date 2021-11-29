@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:portofolio/core/base/screen/stateful_bloc.dart';
 import 'package:portofolio/features/portofolio/data/models/hero_model.dart';
 import 'package:portofolio/features/portofolio/data/models/portofolio_model.dart';
@@ -7,7 +8,7 @@ import 'package:portofolio/features/portofolio/presentation/bloc/portofolio_bloc
 import 'package:portofolio/features/portofolio/presentation/templates/hero_1/hero_1_widget.dart';
 
 class PortofolioPage extends StatefulWidget {
-  static const String tag = '/';
+  static const String tag = '/id';
   const PortofolioPage({Key? key}) : super(key: key);
 
   @override
@@ -16,8 +17,10 @@ class PortofolioPage extends StatefulWidget {
 
 class _PortofolioPageState extends StatefulBloc<PortofolioPage, PortofolioBloc,
     PortofolioState, PortofolioEvent> {
+  String userId = "";
   @override
   void initState() {
+    userId = Get.parameters["user"] ?? "";
     super.initState();
   }
 
@@ -27,7 +30,7 @@ class _PortofolioPageState extends StatefulBloc<PortofolioPage, PortofolioBloc,
       body: createBloc(
         event: FetchPortofolioEvent(
           locale: 'locale.id',
-          userId: 'ardianbagus2403@gmail.com',
+          userId: userId,
         ),
         child: blocConsumer(
           listener: (context, state) {
@@ -50,16 +53,18 @@ class _PortofolioPageState extends StatefulBloc<PortofolioPage, PortofolioBloc,
               }
 
               return SingleChildScrollView(
-                child: Column(
-                  children: templates.map((template) {
-                    setLog(template.toJson(), log: "Portofolio Loaded ==>");
-                    if (template.id == Hero1Widget.templateId) {
-                      HeroModel hero = HeroModel.fromJson(template.meta);
-                      return Hero1Widget(hero);
-                    }
+                child: bodyConstraints(
+                  child: Column(
+                    children: templates.map((template) {
+                      setLog(template.toJson(), log: "Portofolio Loaded ==>");
+                      if (template.id == Hero1Widget.templateId) {
+                        HeroModel hero = HeroModel.fromJson(template.meta);
+                        return Hero1Widget(hero);
+                      }
 
-                    return const SizedBox();
-                  }).toList(),
+                      return const SizedBox();
+                    }).toList(),
+                  ),
                 ),
               );
             }

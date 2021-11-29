@@ -43,6 +43,19 @@ abstract class BaseStateless extends StatelessWidget {
     // );
   }
 
+  // Body Constraints
+  Widget bodyConstraints({required Widget child, double maxWidth = 1200}) {
+    return Center(
+      child: Container(
+        constraints: BoxConstraints(
+          maxWidth: maxWidth,
+        ),
+        alignment: Alignment.center,
+        child: child,
+      ),
+    );
+  }
+
   /// Body of the page
   Widget body(BuildContext context);
 
